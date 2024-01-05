@@ -2,8 +2,8 @@
 import { type Ref, inject, ref } from "vue";
 import * as feather from "feather-icons";
 import { useRouter } from "vue-router";
-import { type MessageUserModel } from "@/@types/message.model";
-import { Auth } from "@/@types/auth.model";
+import { type MessageUserModel } from "@/models/message.model";
+import { type Auth } from "@/models/auth.model";
 
 const emit = defineEmits(["addMessage"]);
 const { user }: Auth = inject("auth");

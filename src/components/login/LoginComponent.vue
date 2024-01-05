@@ -4,8 +4,8 @@ import { RouterLink, useRouter } from "vue-router";
 import * as feather from "feather-icons";
 import { login as loginService } from "@/helpers/services/user";
 import { inject, ref } from "vue";
-import type { User } from "@/@types/user.model";
-import { Auth } from "@/@types/auth.model";
+import { type  User } from "@/models/user.model" 
+import { type Auth } from "@/models/auth.model";
 
 const arrow: string = feather.icons["arrow-left"].toSvg({
   height: "0.95em",

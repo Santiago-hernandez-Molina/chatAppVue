@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import { type RoomModel } from "@/models/room.model";
 import { useRouter } from "vue-router";
-import { type RoomModel } from "@/@types/room.model";
 
 const props = defineProps<{ room: RoomModel }>();
 const router = useRouter();

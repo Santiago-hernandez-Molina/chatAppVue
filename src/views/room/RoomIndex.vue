@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import RoomLayout from "@/layouts/RoomLayout.vue";
 import RoomCardComponentVue from "@/components/room_card/RoomCardComponent.vue";
-import { type RoomModel } from "@/@types/room.model";
+import RoomLayout from "@/layouts/RoomLayout.vue";
 import { inject, ref, type Ref } from "vue";
 import { getRooms } from "@/helpers/services/room_services";
-import { type Auth } from "@/@types/auth.model";
+import { RoomModel } from "@/models/room.model";
+import { Auth } from "@/models/auth.model";
 
 const rooms: Ref<RoomModel[]> = ref([]);
 const { user }: Auth = inject("auth");

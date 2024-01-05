@@ -2,7 +2,7 @@
 import { RouterLink } from "vue-router";
 import * as feather from "feather-icons";
 import { inject } from "vue";
-import { type Auth } from "@/@types/auth.model" 
+import { type Auth } from "@/models/auth.model";
 
 const logInIcon = feather.icons["log-in"].toSvg({});
 const logOutIcon = feather.icons["log-out"].toSvg({});

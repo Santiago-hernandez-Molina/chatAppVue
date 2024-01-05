@@ -7,9 +7,8 @@ import axios, {
 } from "axios";
 import { logout } from "../authentication/AuthHelper";
 import { BASE_URL } from "../utils/constants";
-import { RoomModel } from "@/@types/room.model";
-import { MessageUserModel } from "@/@types/message.model";
-
+import { RoomModel } from "@/models/room.model";
+import { MessageUserModel } from "@/models/message.model";
 
 export const getRooms = async (): Promise<RoomModel[]> => {
   const headers: AxiosHeaders = new AxiosHeaders();
@@ -28,13 +27,15 @@ export const getRooms = async (): Promise<RoomModel[]> => {
         router.push("/");
       }
       if (res.response?.status === 401) {
-        logout()
+        logout();
         router.push("/login");
       }
     });
 };
 
-export const getMessages = async (roomId: number): Promise<MessageUserModel[]> => {
+export const getMessages = async (
+  roomId: number,
+): Promise<MessageUserModel[]> => {
   const headers: AxiosHeaders = new AxiosHeaders();
   headers.setContentType("application/json");
   const config: AxiosRequestConfig = {

@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import MessageComponent from "@/components/message/MessageComponent.vue";
 import InputMessageComponent from "@/components/input/InputMessageComponent.vue";
-import { type MessageUserModel } from "@/@types/message.model";
 import RoomLayout from "@/layouts/RoomLayout.vue";
 import { type Ref, ref, watch, nextTick, onUnmounted } from "vue";
 import { getMessages } from "@/helpers/services/room_services";
 import { BASE_URL_WEBSOCKET } from "@/helpers/utils/constants";
+import { MessageUserModel } from "@/models/message.model";
 
 const props = defineProps<{ id: string }>();
 const messages: Ref<MessageUserModel[]> = ref([]);

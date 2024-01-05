@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { type Auth } from "@/@types/auth.model";
-import { type MessageUserModel } from "@/@types/message.model";
+import { type Auth } from "@/models/auth.model";
+import { type MessageUserModel } from "@/models/message.model";
 import { inject } from "vue";
 
 const props = defineProps<{ message: MessageUserModel }>();

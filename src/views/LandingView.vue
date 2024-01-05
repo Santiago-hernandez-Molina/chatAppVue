@@ -3,7 +3,7 @@ import * as feather from "feather-icons";
 import DecorationComponent from "@/components/decoration/DecorationComponent.vue";
 import NavbarComponent from "@/components/navbar/NavbarComponent.vue";
 import { inject } from "vue";
-import { type Auth } from "@/@types/auth.model";
+import { Auth } from "@/models/auth.model";
 
 const userp = feather.icons["user-plus"].toSvg({
   width: "1em",
