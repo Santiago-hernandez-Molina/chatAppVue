@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import MessageComponent from "@/components/message/MessageComponent.vue";
 import InputMessageComponent from "@/components/input/InputMessageComponent.vue";
-import type MessageUserModel from "@/@types/message.model";
+import { type MessageUserModel } from "@/@types/message.model";
 import RoomLayout from "@/layouts/RoomLayout.vue";
 import { type Ref, ref, watch, nextTick, onUnmounted } from "vue";
 import { getMessages } from "@/helpers/services/room_services";
@@ -12,7 +12,7 @@ const messages: Ref<MessageUserModel[]> = ref([]);
 const URLWEBSOCKET = BASE_URL_WEBSOCKET + "/v1/room/ws/" + props.id;
 
 const socket = new WebSocket(URLWEBSOCKET);
-const messageContainer: Ref<HTMLDivElement> = ref(null);
+const messageContainer: Ref<HTMLDivElement | null> = ref(null);
 let active = true;
 
 window.addEventListener("blur", () => {
@@ -61,6 +61,9 @@ watch(
   () => messages.value,
   async () => {
     await nextTick();
+    if (messageContainer.value == null) {
+        return
+    }
     messageContainer.value.scrollTop = messageContainer.value.scrollHeight;
   },
 );

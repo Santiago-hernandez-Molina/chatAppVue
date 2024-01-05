@@ -1,3 +1,4 @@
+import { User } from "@/@types/user.model";
 import { type Ref, ref } from "vue";
 
 let isAuth: string | null = localStorage.getItem("auth");

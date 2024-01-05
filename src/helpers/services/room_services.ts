@@ -7,6 +7,8 @@ import axios, {
 } from "axios";
 import { logout } from "../authentication/AuthHelper";
 import { BASE_URL } from "../utils/constants";
+import { RoomModel } from "@/@types/room.model";
+import { MessageUserModel } from "@/@types/message.model";
 
 
 export const getRooms = async (): Promise<RoomModel[]> => {

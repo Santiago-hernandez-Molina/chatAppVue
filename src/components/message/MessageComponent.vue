@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import type MessageUserModel from "@/@types/message.model";
+import { type Auth } from "@/@types/auth.model";
+import { type MessageUserModel } from "@/@types/message.model";
 import { inject } from "vue";
 
 const props = defineProps<{ message: MessageUserModel }>();
-const { user } = inject("auth");
+const { user }: Auth = inject("auth");
 let styleMessage: string = "host";
 if (user.value.id != props.message.user.id) {
   styleMessage = "guest";

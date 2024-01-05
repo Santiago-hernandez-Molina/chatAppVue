@@ -3,6 +3,7 @@ import * as feather from "feather-icons";
 import DecorationComponent from "@/components/decoration/DecorationComponent.vue";
 import NavbarComponent from "@/components/navbar/NavbarComponent.vue";
 import { inject } from "vue";
+import { type Auth } from "@/@types/auth.model";
 
 const userp = feather.icons["user-plus"].toSvg({
   width: "1em",
@@ -16,7 +17,7 @@ const message = feather.icons["message-square"].toSvg({
   color: "var(--deep-red)"
 });
 
-const { authenticated, user } = inject("auth");
+const { authenticated, user }: Auth = inject("auth");
 </script>
 
 <template lang="html">

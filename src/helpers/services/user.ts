@@ -1,5 +1,6 @@
 import axios, { AxiosHeaders, AxiosRequestConfig, AxiosResponse } from "axios";
 import { BASE_URL } from "../utils/constants";
+import { LoginRequest } from "@/@types/loginRequest.model";
 
 export const login = async (user: LoginRequest) => {
   const headers: AxiosHeaders = new AxiosHeaders();

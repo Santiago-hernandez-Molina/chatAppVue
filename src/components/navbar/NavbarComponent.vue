@@ -2,12 +2,13 @@
 import { RouterLink } from "vue-router";
 import * as feather from "feather-icons";
 import { inject } from "vue";
+import { type Auth } from "@/@types/auth.model" 
 
 const logInIcon = feather.icons["log-in"].toSvg({});
 const logOutIcon = feather.icons["log-out"].toSvg({});
 const homeIcon = feather.icons["home"].toSvg({});
 
-const { authenticated, logout } = inject("auth");
+const { authenticated, logout }: Auth = inject("auth");
 </script>
 
 <template lang="html">

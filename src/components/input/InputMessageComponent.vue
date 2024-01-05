@@ -2,10 +2,11 @@
 import { type Ref, inject, ref } from "vue";
 import * as feather from "feather-icons";
 import { useRouter } from "vue-router";
-import type MessageUserModel from "@/@types/message.model";
+import { type MessageUserModel } from "@/@types/message.model";
+import { Auth } from "@/@types/auth.model";
 
 const emit = defineEmits(["addMessage"]);
-const { user } = inject("auth");
+const { user }: Auth = inject("auth");
 const router = useRouter();
 if (user.value === null) {
   router.push("/");
@@ -14,10 +15,12 @@ const msg: Ref<string> = ref("");
 
 const sendMessage = () => {
   const message: MessageUserModel = {
+    id: 0,
     content: msg.value,
     user: {
       id: user.value.id,
       username: user.value.username,
+      email: user.value.email,
     },
   };
   emit("addMessage", message);
@@ -82,8 +85,8 @@ const icon = feather.icons["send"].toSvg({ width: "1.3em" });
   background: var(--light-red);
 }
 @media (max-width: 800px) {
-.input-message {
+  .input-message {
     grid-template-columns: 85% auto;
-}
+  }
 }
 </style>
