@@ -28,4 +28,13 @@ body{
     .title-lg{
         font-size: 2.5em;
     }
+    .feather-home{
+        width: 15px;
+        height: 15px;
+    }
+    .feather-log-out{
+        width: 15px;
+        height: 15px;
+    }
 }
+

@@ -22,39 +22,35 @@ const defaultImg: string =
 
 <style scoped>
 .room-card {
-  height: 120px;
+  margin: 5px;
   width: 100px;
   cursor: pointer;
-  overflow: hidden;
-  display: grid;
-  grid-template-rows: 1.6fr 0.4fr;
   gap: 2px;
 }
 .room-card:hover {
-  scale: 1.07;
+  scale: 1.05;
 }
 .room-card > img {
-  height: 100%;
   width: 100%;
   border-radius: 5px;
-  background: var(--white);
   object-fit: cover;
   object-position: center;
+  border: 1px solid var(--deep-blue);
 }
 .room-name {
-  border-radius: 3px;
-  background: var(--white);
-  display: grid;
-  place-content: center;
-  overflow: hidden;
+  width: 100%;
+  border-radius: 5px;
 }
 .room-name p {
+  background: var(--light-blue);
+  width: 100%;
+  border: 1px solid var(--deep-blue);
+  text-align: center;
   border-radius: 3px;
   color: var(--deep-blue);
   font-weight: bold;
   font-family: var(--montserrat);
-  font-size: 1em;
+  font-size: 0.85em;
   margin: 0;
-  padding: 0;
 }
 </style>

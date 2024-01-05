@@ -5,7 +5,7 @@ import { inject } from "vue";
 const props = defineProps<{ message: MessageUserModel }>();
 const { user } = inject("auth");
 let styleMessage: string = "host";
-if (user.id != props.message.user.id) {
+if (user.value.id != props.message.user.id) {
   styleMessage = "guest";
 }
 </script>

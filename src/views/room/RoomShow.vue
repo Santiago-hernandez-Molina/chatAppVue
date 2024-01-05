@@ -5,13 +5,28 @@ import type MessageUserModel from "@/@types/message.model";
 import RoomLayout from "@/layouts/RoomLayout.vue";
 import { type Ref, ref, watch, nextTick, onUnmounted } from "vue";
 import { getMessages } from "@/helpers/services/room_services";
+import { BASE_URL_WEBSOCKET } from "@/helpers/utils/constants";
 
 const props = defineProps<{ id: string }>();
 const messages: Ref<MessageUserModel[]> = ref([]);
-const URLWEBSOCKET = "ws://localhost:8080/v1/room/ws/" + props.id;
+const URLWEBSOCKET = BASE_URL_WEBSOCKET + "/v1/room/ws/" + props.id;
 
 const socket = new WebSocket(URLWEBSOCKET);
 const messageContainer: Ref<HTMLDivElement> = ref(null);
+let active = true;
+
+window.addEventListener("blur", () => {
+  active = false;
+  console.log("inactive");
+});
+window.addEventListener("focus", () => {
+  active = true;
+  console.log("active");
+});
+
+if (Notification.permission === "default") {
+  Notification.requestPermission();
+}
 
 getMessages(parseInt(props.id)).then((data) => {
   messages.value = data;
@@ -20,6 +35,17 @@ getMessages(parseInt(props.id)).then((data) => {
 socket.onmessage = (event) => {
   const message = JSON.parse(event.data);
   messages.value = [...messages.value, message];
+  if (active) {
+    return;
+  }
+  if (Notification.permission === "granted") {
+    const notify = new Notification(
+      `Chat App \n ${message.user.username}: ${message.content}`,
+    );
+    setTimeout(() => notify.close, 200);
+  } else {
+    Notification.requestPermission();
+  }
 };
 
 const addMessage = (message: MessageUserModel) => {
@@ -69,5 +95,10 @@ watch(
   overflow: scroll;
   display: flex;
   flex-direction: column;
+}
+@media (max-width: 800px) {
+  .chat {
+    height: 80vh;
+  }
 }
 </style>

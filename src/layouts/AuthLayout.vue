@@ -36,4 +36,14 @@ const props = defineProps<{
   background: var(--white);
   padding: 5px;
 }
+
+@media(max-width:800px){
+.modal > div:nth-child(1) {
+  min-width: 100%;
+  height: 85vh;
+  border-radius: 0;
+  background: var(--white);
+  padding: 0;
+}
+}
 </style>

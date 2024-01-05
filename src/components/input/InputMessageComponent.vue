@@ -7,7 +7,7 @@ import type MessageUserModel from "@/@types/message.model";
 const emit = defineEmits(["addMessage"]);
 const { user } = inject("auth");
 const router = useRouter();
-if (user === null) {
+if (user.value === null) {
   router.push("/");
 }
 const msg: Ref<string> = ref("");
@@ -16,8 +16,8 @@ const sendMessage = () => {
   const message: MessageUserModel = {
     content: msg.value,
     user: {
-      id: user.id,
-      username: user.username,
+      id: user.value.id,
+      username: user.value.username,
     },
   };
   emit("addMessage", message);
@@ -80,5 +80,10 @@ const icon = feather.icons["send"].toSvg({ width: "1.3em" });
 }
 .input-message > button:hover {
   background: var(--light-red);
+}
+@media (max-width: 800px) {
+.input-message {
+    grid-template-columns: 85% auto;
+}
 }
 </style>

@@ -6,8 +6,8 @@ import axios, {
   AxiosResponse,
 } from "axios";
 import { logout } from "../authentication/AuthHelper";
+import { BASE_URL } from "../utils/constants";
 
-const BASE_URL = "http://localhost:8080";
 
 export const getRooms = async (): Promise<RoomModel[]> => {
   const headers: AxiosHeaders = new AxiosHeaders();

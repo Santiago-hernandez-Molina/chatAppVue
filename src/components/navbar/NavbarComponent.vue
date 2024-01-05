@@ -82,10 +82,13 @@ a {
 }
 @media (max-width: 800px) {
   .login-text {
-    font-size: 1.5em;
+    font-size: 1.1em;
   }
   .title-lg {
-    font-size: 1.8em;
+    font-size: 1.3em;
+  }
+  .nav {
+    height: 6vh;
   }
 }
 </style>
