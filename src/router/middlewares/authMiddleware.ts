@@ -1,7 +1,7 @@
 import { authenticated } from "@/helpers/authentication/AuthHelper";
 import { RouteLocationNormalized } from "vue-router";
 
-const publicPaths = ["Index", "Login"];
+const publicPaths = ["Index", "Login", "Register"];
 
 export const validateLogin = (to: RouteLocationNormalized) => {
   if (to.name == null || to.name == undefined) {

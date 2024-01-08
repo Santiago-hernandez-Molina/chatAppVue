@@ -3,8 +3,8 @@ import AuthLayout from "@/layouts/AuthLayout.vue";
 import { RouterLink, useRouter } from "vue-router";
 import * as feather from "feather-icons";
 import { login as loginService } from "@/helpers/services/user";
-import { inject, ref } from "vue";
-import { type  User } from "@/models/user.model" 
+import { type Ref, inject, ref } from "vue";
+import { type User } from "@/models/user.model";
 import { type Auth } from "@/models/auth.model";
 
 const arrow: string = feather.icons["arrow-left"].toSvg({
@@ -12,6 +12,7 @@ const arrow: string = feather.icons["arrow-left"].toSvg({
   width: "0.95em",
 });
 
+const err: Ref<string | null> = ref(null);
 const router = useRouter();
 
 const loginForm = ref({
@@ -26,16 +27,18 @@ const handleSubmit = () => {
     if (data) {
       login(data);
       router.push("/rooms");
+    } else {
+      err.value = "Error while log-in try again";
     }
   });
 };
 </script>
 
 <template>
-  <AuthLayout title="Login">
+  <AuthLayout :error="err" title="Login">
     <form @submit.prevent="handleSubmit">
-      <label for="name">Username</label>
-      <input v-model="loginForm.email" type="text" id="name" name="name" />
+      <label for="email">Email</label>
+      <input v-model="loginForm.email" type="text" id="email" name="email" />
       <label for="password">Password</label>
       <input
         v-model="loginForm.password"

@@ -5,7 +5,7 @@ import RoomLayout from "@/layouts/RoomLayout.vue";
 import { type Ref, ref, watch, nextTick, onUnmounted } from "vue";
 import { getMessages } from "@/helpers/services/room_services";
 import { BASE_URL_WEBSOCKET } from "@/helpers/utils/constants";
-import { MessageUserModel } from "@/models/message.model";
+import { type MessageUserModel } from "@/models/message.model";
 
 const props = defineProps<{ id: string }>();
 const messages: Ref<MessageUserModel[]> = ref([]);

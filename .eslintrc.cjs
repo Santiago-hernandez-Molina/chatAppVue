@@ -1,7 +1,4 @@
 module.exports = {
-  globals: {
-    EDB_Matter: true,
-  },
   env: {
     browser: true,
     es2021: true,
@@ -10,6 +7,7 @@ module.exports = {
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:vue/vue3-essential",
+    "prettier",
   ],
   overrides: [
     {
@@ -17,16 +15,14 @@ module.exports = {
         node: true,
       },
       files: [".eslintrc.{js,cjs}"],
-      parserOptions: {
-        sourceType: "script",
-      },
     },
   ],
+  parser: "vue-eslint-parser",
   parserOptions: {
-    ecmaVersion: "latest",
+    ecmaVersion: 2021,
     parser: "@typescript-eslint/parser",
     sourceType: "module",
   },
-  plugins: ["@typescript-eslint", "vue"],
+  plugins: ["vue"],
   rules: {},
 };

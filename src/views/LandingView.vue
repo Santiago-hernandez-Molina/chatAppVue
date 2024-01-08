@@ -3,7 +3,8 @@ import * as feather from "feather-icons";
 import DecorationComponent from "@/components/decoration/DecorationComponent.vue";
 import NavbarComponent from "@/components/navbar/NavbarComponent.vue";
 import { inject } from "vue";
-import { Auth } from "@/models/auth.model";
+import { type Auth } from "@/models/auth.model";
+import { type Router, useRouter } from "vue-router";
 
 const userp = feather.icons["user-plus"].toSvg({
   width: "1em",
@@ -14,10 +15,11 @@ const message = feather.icons["message-square"].toSvg({
   width: "1.2em",
   height: "1.2em",
   class: "msg",
-  color: "var(--deep-red)"
+  color: "var(--deep-red)",
 });
 
 const { authenticated, user }: Auth = inject("auth");
+const router: Router = useRouter();
 </script>
 
 <template lang="html">
@@ -31,7 +33,9 @@ const { authenticated, user }: Auth = inject("auth");
     <div v-else class="welcome">
       <p>Welcome to our App, to beign chatting Sign Up now</p>
       <div v-html="message"></div>
-      <button>Sign up <span v-html="userp"></span></button>
+      <button @click="() => router.push('/register')">
+        Register Now <span v-html="userp"></span>
+      </button>
     </div>
     <DecorationComponent :rotate="false" />
   </div>
