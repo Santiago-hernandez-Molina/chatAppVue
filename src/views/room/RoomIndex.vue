@@ -4,9 +4,10 @@ import RoomLayout from "@/layouts/RoomLayout.vue";
 import { inject, ref, type Ref } from "vue";
 import { getRooms } from "@/helpers/services/room_services";
 import { type RoomModel } from "@/models/room.model";
+import { type Auth } from "@/models/auth.model";
 
 const rooms: Ref<RoomModel[]> = ref([]);
-const { user } = inject("auth");
+const { user }: Auth = inject("auth");
 
 getRooms().then((data) => {
   rooms.value = data;

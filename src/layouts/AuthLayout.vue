@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import { type Ref } from 'vue';
 
 const props = defineProps<{
   title: string;
-  error: Ref<string | null>;
+  error: string | null;
 }>();
 
 </script>
